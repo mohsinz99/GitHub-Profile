@@ -116,7 +116,7 @@ function displayInfo(){
         fetch(`https://api.github.com/users/${username}/events`)
         .then(response=>response.json())
         .then(data=>{
-            var len = 6  //how many events show
+            var len = 6  //how many events show in recents
             if(data.length<6){
                 len = data.length
             }
@@ -131,3 +131,7 @@ function displayInfo(){
     })
     document.getElementById("contribution-calendar").setAttribute("src", `http://ghchart.rshah.org/${username}`)
 }
+document.getElementById("form").addEventListener("submit", function(event){
+    event.preventDefault()
+    displayInfo()
+})
